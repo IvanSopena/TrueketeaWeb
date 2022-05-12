@@ -1,0 +1,63 @@
+﻿@{
+    List<ProvinceInfoModel> ProvInfo = ViewBag.ProInfo;
+}
+﻿<div class="row">
+
+                <div class="col-md-12 col-sm-12 ">
+                  <div class="x_panel">
+                    <div class="x_title">
+                      <h2>Registros de usuarios por provincias </h2>
+                      
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                      <div class="dashboard-widget-content">
+                       
+                           @{
+
+                                        if (@ProvInfo.Count > 0)
+                                        {
+                                            <table  id="datatable" class="table table-striped table-hover table-bordered" style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th id="Table_Title">ID</th>
+                                                        <th id="Table_Title">Provincia</th>
+                                                        <th id="Table_Title">Usuarios</th>
+                                                    </tr>
+                                            </thead>
+
+                                            
+                                            <tbody>
+
+                                                  @foreach( var item in @ProvInfo)
+                                                  {
+                                                      <tr>
+                                                            <td style="text-align:center;">@item.InternalCode</td>
+                                                            <td style="text-align:center;">@item.Name</td>
+                                                            <td style="text-align:center;">@item.TotalUsers</td>
+                                                            
+                                                      </tr>
+                                                  }
+                                                
+
+                                            </tbody>
+                                            </table>
+                                        }
+                                        else
+                                        {
+                                            <h2>No hay datos para mostrar</h2>
+                                        }
+
+                            
+                            
+                                    }
+                      
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+

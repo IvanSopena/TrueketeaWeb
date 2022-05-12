@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "Recuperar Contraseña -";
+    string type = "" + ViewBag.Type;
+}
+
+<link href="~/css/MyStyle/Login.css" rel="stylesheet" type="text/css">
+
+<body class="login"> 
+    <div>
+      <a class="hiddenanchor" id="signup"></a>
+      <a class="hiddenanchor" id="signin"></a>
+
+      <div class="login_wrapper">
+        <div class="animate form login_form">
+          <section class="login_content">
+            <form id="LoginFormValidate" method="POST" action="/Home/Send_Restore">
+              <h1> Recovery Pass </h1>
+              <div>
+                <input type="email" name="Email" id="Email" class="form-control"  placeholder="Email"/>
+              </div>
+              
+              <div>
+                <button type="submit" class="button" >Enviar</button> 
+                @Html.ActionLink("Vueve a la pantalla de Login", "Index","Home", null, new { @class = "reset_pass" })
+             
+              </div>
+
+              <div class="clearfix"></div>
+
+               
+
+              <div class="separator">
+
+                <div id="err" class="error"></div>
+
+                <div>
+                  <img id="logo" src="~/img/Logo.png">
+                  <h1><i class="fa fa-copyright"></i> IS13Company</h1>
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
+       </div>
+    </div>
+
+  <script type="text/javascript" src="~/Scripts/Login/JSLogin.js"></script>
+
+  
+
+
+                            @{
+                                switch (type)
+                                {
+                                    case "Error":
+                                        <partial name="Messages/Error"/>
+                                        break;
+                                    case "Success":
+                                        <partial name="Messages/Success"/>
+                                        break;
+                                    case "Warning":
+                                        <partial name="Messages/Warning"/>
+                                        break;
+                                    case "Info":
+                                        <partial name="Messages/Info"/>
+                                        break;
+                                }
+                            }
+<partial name="footer/footer"/>
+</body>

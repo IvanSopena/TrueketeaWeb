@@ -1,0 +1,13 @@
+﻿@{
+
+    string err = "" + ViewBag.Message;
+ }  
+
+<script>
+    toastr.warning('@err', 'Trueketea', {
+    'closeButton': true,
+    'preventDuplicates': false,
+    'progressBar': false,
+    'positionClass': 'toast-top-center'
+});
+</script>

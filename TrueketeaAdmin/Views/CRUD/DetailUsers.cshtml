@@ -1,0 +1,302 @@
+﻿
+
+@{
+    ViewBag.Title = "Perfil de usuario";
+
+    List<ProvincesModel> provinces = ViewBag.Provinces;
+    string type = "" + ViewBag.Type;
+    string user_name = ViewBag.UserName;
+    string email = ViewBag.email;
+    string pass = ViewBag.pass;
+    string telf = ViewBag.telf;
+    string fecha = ViewBag.fecha;
+    string appuser = ViewBag.appuser;
+    string provincia = ViewBag.province;
+    string genero = ViewBag.genero;
+    string activo = ViewBag.activo;
+    string foto = ViewBag.foto;
+    string id = ViewBag.Id;
+
+}
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+
+            <partial name="MenuBar/MenuBar" />
+            <partial name="TopNavigation/TopNavigation" />
+             <!-- contenido -->
+            <div class="right_col" role="main" style="height: 100% !important;">
+                <div>
+                    <div class="page-title">
+                        <div class="title_left">
+                            <h3>PERFIL DE USUARIO</h3>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 " >
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Datos del usuario</h2>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <div class="col-md-3 col-sm-3  profile_left">
+                                        <div class="profile_img">
+                                            <div id="crop-avatar">
+                                                <img class="img-responsive avatar-view profile-pic" src="@foto" width="200" height="200"  alt="Avatar" title="Change the avatar">
+                                            </div>
+                                        </div>
+                                        <h3>@user_name</h3>
+                                        <br />
+                                    </div>
+                                    <div class="col-md-9 col-sm-9 ">
+                                        <div class="profile_title">
+
+                                            <div class="x_panel">
+
+                                                <div class="x_content">
+                                                    <br />
+                                                    <form class="" novalidate>
+                                                        <div class="field item form-group">
+                                                            <div class="col-md-9 col-sm-9 form-group has-feedback">
+                                                                <input class="form-control has-feedback-left"  data-validate-length-range="6" data-validate-words="2" readonly name="name" value="@user_name" placeholder="Nombre*" />
+                                                                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="field item form-group" hidden>
+                                                            <div class="col-md-9 col-sm-9 form-group has-feedback" hidden>
+                                                                <input class="form-control has-feedback-left"  data-validate-length-range="6" data-validate-words="2" name="Id" hidden value="@id" placeholder="" />
+                                                                <span class="fa fa-user form-control-feedback left" hidden aria-hidden="true"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="field item form-group">
+                                                            <div class="col-md-9 col-sm-9 form-group has-feedback">
+                                                                <input class="form-control has-feedback-left" value="@email" placeholder = "Email*" name="email" class='email' readonly type="email" />
+                                                                <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="field item form-group">
+                                                            <div class="col-md-9 col-sm-9 form-group has-feedback">
+                                                               <input class="form-control has-feedback-left" value="@appuser" data-validate-length-range="6"  readonly data-validate-words="2" name="AppName" placeholder = "User*"  />
+                                                                <span class="fa fa-id-badge form-control-feedback left" aria-hidden="true"></span>
+                                                            </div>
+                                                        </div>
+                                                       
+                                                        <div class="field item form-group">
+                                                            <div class="col-md-9 col-sm-9  form-group has-feedback">
+                                                                <input type="password" class="form-control has-feedback-left Password1" readonly value="@pass"  id="password" name="password"  placeholder = "Password*">
+                                                                <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
+                                                                <span style="position: absolute;right:15px;top:12px;" class="fa fa-eye show-password"></span> @*onclick="hideshow()*@
+                                                            
+                                                                <label style="position: absolute;right:-70px;top:12px;" id="passstrength"></label>
+                                                            </div>
+                                                           
+                                                        </div>
+
+                                                        <div class="field item form-group">
+                                                            <div class="col-md-9 col-sm-9  form-group has-feedback">
+                                                                <input  class="form-control has-feedback-left Password1" value="@telf" type="tel" readonly placeholder = "Telefono*" class='tel' name="phone"  >
+                                                                <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="field item form-group">
+                                                            <div class="col-md-9 col-sm-9  form-group has-feedback">
+                                                                <input class="form-control date-picker has-feedback-left" value="@fecha" readonly placeholder = "dd-mm-yyyy"  type="text" name="time" onclick="this.type='date'"  >
+                                                                <script>
+                                                                    function timeFunctionLong(input) {
+                                                                        setTimeout(function() {
+                                                                            input.type = 'text';
+                                                                        }, 60000);
+                                                                    }
+                                                                </script>
+
+                                                                <span class="fa fa-calendar form-control-feedback left" aria-hidden="true"></span>
+                                                            </div>
+                                                        </div>
+                                                     
+
+                                                        <div class="field item form-group">
+                                                            <div class="col-md-9 col-sm-9  form-group has-feedback">
+                                                                <select class="select2_group form-control has-feedback-left" readonly name="place">
+                                                                    <option>Seleccione una ubicación</option>
+                                                                    @{
+
+                                                                    for (int f = 0; f <= provinces.Count()-1 ; f++)
+                                                                    {
+                                                                        string comparative = @provinces[f].Id;
+                                                                        if (provincia.Equals(comparative))
+                                                                        {
+                                                                            <option  selected value="@provinces[f].InternalCode"> @provinces[f].Desc</option>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <option value="@provinces[f].InternalCode"> @provinces[f].Desc</option>
+                                                                        }
+
+                                                                    }
+
+                                                                }
+                                                                </select>
+                                                                <span class="fa fa-location-arrow form-control-feedback left" aria-hidden="true"></span>
+                                                            </div>
+                                                        </div>
+                                                        
+
+                                                        <div class="field item form-group">
+                                                            <div class="col-md-9 col-sm-9  form-group has-feedback">
+                                                                <select class="select2_group form-control has-feedback-left" readonly name="gener"> 
+                                                                   @{
+                                                                        if (genero.Equals("1"))
+                                                                        {
+                                                                            <option  selected value="M"> Masculino </option>
+                                                                            <option value="F">Femenino</option>
+                                                                        }
+                                                                        if (genero.Equals("0"))
+                                                                        {
+                                                                            <option selected value="F"> Femenino </option>
+                                                                            <option value="M"> Masculino </option>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <option>Seleccione Genero</option>
+                                                                        }
+
+                                                                    }
+                                                                </select>
+                                                                <span class="fa fa-venus-mars form-control-feedback left" aria-hidden="true"></span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="field item form-group">
+                                                            <div class="col-md-9 col-sm-9  form-group has-feedback">
+                                                                <select class="select2_group form-control has-feedback-left" name="activo">
+                                                                   @{
+                                                                        if (activo.Equals("1"))
+                                                                        {
+                                                                            <option  selected value="Activo"> Activo </option>
+                                                                            <option value="Inactivo">Inactivo</option>
+                                                                        }
+                                                                        if (activo.Equals("0"))
+                                                                        {
+                                                                            <option selected value="Inactivo">Inactivo </option>
+                                                                            <option value="Activo"> Activo </option>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <option>Seleccione Estado</option>
+                                                                        }
+
+                                                                    }
+                                                                </select>
+                                                                <span class="fa fa-venus-mars form-control-feedback left" aria-hidden="true"></span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+
+                                                            <div class="col-md-9 col-sm-9  offset-md-3">
+                                                                <br />
+                                                                <br />
+                                                                <a style="margin: 10px" type="submit" class="btn col-md-6 btn-success" asp-route-id= "@id" asp-action = "Save" asp-controller = "CRUD">Guardar</a>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <!-- ********************************************************************** -->
+             @{
+                                switch (type)
+                                {
+                                    case "Error":
+                                        <partial name="Messages/Error"/>
+                                        break;
+                                    case "Success":
+                                        <partial name="Messages/Success"/>
+                                        break;
+                                    case "Warning":
+                                        <partial name="Messages/Warning"/>
+                                        break;
+                                    case "Info":
+                                        <partial name="Messages/Info"/>
+                                        break;
+                                }
+                            }
+            <footer>
+                <div class="text-center">
+
+                    <div class="border-top pt-5">
+                        <p class="copyright">
+
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> All rights reserved |  <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="#" target="_blank">IS13Company</a>
+
+                        </p>
+                    </div>
+
+                    <div class="footer__social">
+                        <a href="#"><i class="fa fa-facebook-square"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-youtube-play"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                        <a href="#"><i class="fa fa-linkedin-square"></i></a>
+                    </div>
+
+                </div>
+            </footer>
+
+        </div>
+    </div>
+    <script type="text/javascript" src="~/componets/Validator/validator.js"></script>
+    <script>
+	
+
+    var validator = new FormValidator({
+            "events": ['blur', 'input', 'change']
+        }, document.forms[0]);
+        // on form "submit" event
+        document.forms[0].onsubmit = function(e) {
+            var submit = true,
+                validatorResult = validator.checkAll(this);
+            console.log(validatorResult);
+            return !!validatorResult.valid;
+        };
+        // on form "reset" event
+        document.forms[0].onreset = function(e) {
+            validator.reset();
+        };
+        // stuff related ONLY for this demo page:
+        $('.toggleValidationTooltips').change(function() {
+            validator.settings.alerts = !this.checked;
+            if (this.checked)
+                $('form .alert').remove();
+        }).prop('checked', false);
+
+        jQuery(".file-upload").on("change", function () {
+            ! function (e) {
+                if (e.files && e.files[0]) {
+                    var t = new FileReader;
+                    t.onload = function (e) {
+                        jQuery(".profile-pic").attr("src", e.target.result)
+                    }, t.readAsDataURL(e.files[0])
+                }
+            }(this)
+        }), jQuery(".change_picture").on("click", function () {
+            jQuery(".file-upload").click();
+        });
+       
+	</script>
+
+</body>

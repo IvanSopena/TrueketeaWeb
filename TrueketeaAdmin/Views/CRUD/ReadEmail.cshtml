@@ -1,0 +1,173 @@
+﻿@model List<NotificationModel>
+@{
+    ViewBag.Title = ViewBag.Titulo;
+    string type = "" + ViewBag.Type;
+    string actual_id = ViewBag.ActualId;
+
+    string subject = "";
+    string date = "";
+    string emisor = "";
+    string msg = "";
+
+    foreach (var item in @Model)
+    {
+        subject = item.subject;
+        date = item.Date_Diff;
+        emisor = item.Emisor;
+        msg = item.Message;
+    }
+
+}
+
+<link rel="stylesheet" href="~/css/MyStyle/inbox.css">
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <partial name="MenuBar/MenuBar" />
+            <partial name="TopNavigation/TopNavigation" />
+            <!-- ***************************** contenido *********************************-->
+            <div class="right_col" role="main" style="height: 100% !important;">
+                <div>
+                    <div class="page-title">
+                        <div class="title_left">
+                            <h3>Notificaciones</h3>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 ">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Bandeja de entrada</h2>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <a href="@Url.Action("Notify", "CRUD")" class="btn btn-primary btn-block mb-3">Volver</a>
+                                            <div class="card">
+                                                <div style="text-align: center;" class="card-header">
+                                                    <h3 class="card-title">Opciones</h3>
+                                                </div>
+                                                <div class="card-body p-0">
+                                                    <ul class="nav nav-pills flex-column">
+                                                        <li style="font-size: 15px;" class="nav-item active">
+                                                            <a href="@Url.Action("Notify", "CRUD")" class="nav-link">
+                                                                <i class="fa fa-inbox"></i>  Bandeja Entrada
+                                                            </a>
+                                                        </li>
+                                                        <li style="font-size: 15px;" class="nav-item">
+                                                            <a href="#" class="nav-link">
+                                                                <i class="fa fa-envelope"></i> Enviados
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="card card-primary card-outline">
+                                                <div class="card-body p-0">
+                                                    <div class="mailbox-read-info">
+                                                        <h5>@subject</h5>
+                                                        <h6>
+                                                            From: @emisor
+                                                            <span class="mailbox-read-time float-right">@date</span>
+                                                        </h6>
+                                                    </div>
+
+                                                    <div class="mailbox-controls with-border text-center">
+                                                    </div>
+                                                    <div class="mailbox-read-message">
+                                                        <p>@msg</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ********************************************************************** -->
+            @{
+                switch (type)
+                {
+                    case "Error":
+                        <partial name="Messages/Error" />
+                        break;
+                    case "Success":
+                        <partial name="Messages/Success" />
+                        break;
+                    case "Warning":
+                        <partial name="Messages/Warning" />
+                        break;
+                    case "Info":
+                        <partial name="Messages/Info" />
+                        break;
+                }
+            }
+            <footer>
+                <div class="text-center">
+
+                    <div class="border-top pt-5">
+                        <p class="copyright">
+
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> All rights reserved |  <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="#" target="_blank">IS13Company</a>
+
+                        </p>
+                    </div>
+
+                    <div class="footer__social">
+                        <a href="#"><i class="fa fa-facebook-square"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-youtube-play"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                        <a href="#"><i class="fa fa-linkedin-square"></i></a>
+                    </div>
+
+                </div>
+            </footer>
+
+        </div>
+    </div>
+    <script>
+          $(function () {
+            //Enable check and uncheck all functionality
+            $('.checkbox-toggle').click(function () {
+                var clicks = $(this).data('clicks')
+                if (clicks) {
+                    //Uncheck all checkboxes
+                    $('.mailbox-messages input[type=\'checkbox\']').prop('checked', false)
+                    $('.checkbox-toggle .fa.fa-check-square').removeClass('fa-check-square').addClass('fa-square')
+                } else {
+                    //Check all checkboxes
+                    $('.mailbox-messages input[type=\'checkbox\']').prop('checked', true)
+                    $('.checkbox-toggle .fa.fa-square').removeClass('fa-square').addClass('fa-check-square')
+                }
+                $(this).data('clicks', !clicks)
+            })
+
+            //Handle starring for font awesome
+            $('.mailbox-star').click(function (e) {
+                e.preventDefault()
+                //detect type
+                var $this = $(this).find('a > i')
+                var fa = $this.hasClass('fa')
+
+                //Switch states
+                if (fa) {
+                    $this.toggleClass('fa-star')
+                    $this.toggleClass('fa-star-o')
+                }
+            })
+        })
+
+
+
+
+    </script>
+</body>

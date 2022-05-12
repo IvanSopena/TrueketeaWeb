@@ -1,0 +1,195 @@
+﻿@model List<ProductModel>
+
+@{
+    ViewBag.Title = ViewBag.Titulo;
+    string type = "" + ViewBag.Type;
+   
+
+}
+
+    <link rel="stylesheet" href= "~/css/MyStyle/DetailProduct.css" >
+    <body class="nav-md">
+        <div class="container body">
+            <div class="main_container" >
+
+                <partial name="MenuBar/MenuBar" />
+                <partial name="TopNavigation/TopNavigation" />
+     <!-- ***************************** contenido *********************************-->
+                <div class="right_col" role="main" style="height: auto !important;">
+                    <div>
+                        <div class="page-title">
+                            <div class="title_left">
+                                <h3>Detalles de Productos</h3>
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+ @{
+
+     @foreach( var item in Model)
+     {                                
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 ">
+                                <div class="x_panel">
+                                    <div class="x_title">
+                                        <h2>ID: @item.Id</h2>
+                                    
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="x_content">
+                                        <div class="card card-solid">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-12 col-sm-6">
+                                                        <h3 class="d-inline-block d-sm-none">@item.NombreProducto</h3>
+                                                        <div class="col-12">
+                                                            <img src=@item.Foto1 class="product-image" alt="Product Image">
+                                                        </div>
+                                                        <div class="col-12 product-image-thumbs">
+                                                            <div class="product-image-thumb active"><img src=@item.Foto1 alt="Product Image"></div>
+                                                                @if(item.Foto2 != "")
+                                                                {
+                                                                    <div class="product-image-thumb"><img src=@item.Foto2 alt="Product Image"></div>
+                                                                }
+                                                                
+                                                                 @if(item.Foto3 != "")
+                                                                {
+                                                                     <div class="product-image-thumb"><img src=@item.Foto3 alt="Product Image"></div>
+                                                                }
+                                                                 @if(item.Foto4 != "")
+                                                                {
+                                                                     <div class="product-image-thumb"><img src=@item.Foto4 alt="Product Image"></div>
+                                                                }
+                                                        
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-6">
+                                                        <h3 style="color:black;" class="my-3">@item.NombreProducto</h3>
+                                                        <p>@item.Descripcion</p>
+                                                        <hr>
+
+                                                        <h4 style="color:black;">Usuario:</h4>
+                                                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                                             <div class="profile clearfix">
+                                                                  <div class="profile_pic">
+                                                                    <img src=@item.USerPic alt="..." class="img-circle profile_img">
+                                                                    <span style="font-size:20px;margin-left:15PX;" >@item.User_Name</span>
+                                                                  </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <h4 style="color:black;" class="mt-3"> Estado de la Tasación:</h4>
+                                                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+
+                                                           
+                                                            <label style="font-size:18px;" class="bg-gray text-center">
+                                                                @item.Estado
+                                                            </label>
+                                                             
+                                                        </div>
+
+                                                        <div class="bg-gray py-2 px-3 mt-4">
+                                                            <h2 style="color:black;" class="mb-0">
+                                                                Tasación:
+                                                            </h2>
+                                                            <h4 class="mt-2" style="font-size:20px;">
+                                                                <small>Tasado: @item.Precio € </small>
+                                                            </h4>
+                                                        </div>
+
+                                                        <div class="mt-4">
+                                                             <div class="btn btn-default btn-lg btn-flat">
+                                                                    @if(@item.Estado == "Bloqueado")
+                                                                    {
+                                                                         <a asp-route-id= "@item.Id" asp-action = "UnblockProduct" asp-controller = "CRUD" class="btn btn-success change_picture" style="color: white;"><i class="fa fa-ban m-right-xs"></i> Desbloquear Producto</a>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <a asp-route-id= "@item.Id" asp-action = "BlockProduct" asp-controller = "CRUD" class="btn btn-danger change_picture" style="color: white;"><i class="fa fa-ban m-right-xs"></i> Bloquear Producto</a>
+                                                                    }
+                                                                    
+                                                           </div>
+
+                                                            <div class="btn btn-default btn-lg btn-flat">
+                                                                
+                                                                <a asp-route-id= "@item.Id" asp-action = "ChangePrice" asp-controller = "CRUD" class="btn btn-info change_picture" style="color: white;"><i class="fa fa-money m-right-xs"></i> Modificar Tasación</a>
+                                                            </div>
+                                                        </div>
+
+                                                        
+
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-4">
+                                                    <nav class="w-100">
+                                                        <div class="nav nav-tabs" id="product-tab" role="tablist">
+                                                            <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">Categoria</a>
+                                                            <a class="nav-item nav-link" id="product-comments-tab" data-toggle="tab" href="#product-comments" role="tab" aria-controls="product-comments" aria-selected="false">Estado del Producto</a>
+                                                        </div>
+                                                    </nav>
+                                                    <div class="tab-content p-3" id="nav-tabContent">
+                                                        <div class="tab-pane fade show active" id="product-desc" role="tabpanel" aria-labelledby="product-desc-tab"> @item.Categoria </div>
+                                                        <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab">@item.EstadoActual </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                           
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      }
+ }
+                    </div>
+              </div>
+ 
+
+ <!-- ********************************************************************** -->
+                             @{
+                                switch (type)
+                                {
+                                    case "Error":
+                                        <partial name="Messages/Error"/>
+                                        break;
+                                    case "Success":
+                                        <partial name="Messages/Success"/>
+                                        break;
+                                    case "Warning":
+                                        <partial name="Messages/Warning"/>
+                                        break;
+                                    case "Info":
+                                        <partial name="Messages/Info"/>
+                                        break;
+                                }
+                            }
+            <footer>
+                <div class="text-center">
+
+                    <div class="border-top pt-5">
+                        <p class="copyright">
+
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> All rights reserved |  <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="#" target="_blank">IS13Company</a>
+
+                        </p>
+                    </div>
+
+                    <div class="footer__social">
+                        <a href="#"><i class="fa fa-facebook-square"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-youtube-play"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                        <a href="#"><i class="fa fa-linkedin-square"></i></a>
+                    </div>
+
+                </div>
+            </footer>
+
+        </div>
+    </div>
+    <script>
+  
+</script>
+</body>

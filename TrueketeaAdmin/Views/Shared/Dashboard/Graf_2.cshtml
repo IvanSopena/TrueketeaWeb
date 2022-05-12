@@ -1,0 +1,104 @@
+﻿@{
+    string[] Subidos = ViewBag.Subidos;
+    string[] Finalizados = ViewBag.Finalizado;
+    string[] Proceso = ViewBag.Proceso;
+    string[] Block = ViewBag.Bloqueados;
+
+}
+<div class="row">
+            <div class="col-md-12 col-sm-12 ">
+              <div class="dashboard_graph">
+
+               <div class="row x_title">
+                  <div class="col-md-6">
+                    <h3>Actividad Productos </h3>
+                  </div>
+ 
+                <div class="x_content">
+                    <canvas id="mybarChart"></canvas>
+                 </div>
+
+                <div class="clearfix"></div>
+              </div>
+            </div>
+
+          </div>
+    </div>
+
+          <script>
+              var ctx = document.getElementById("mybarChart");
+              var mybarChart = new Chart(ctx, {
+                                    type: 'bar',
+                                    data: {
+                                        labels: ["Ene.", "Feb.", "Mar.", "Abr.", "May.", "Jun.", "Jul.", "Ago.", "Sept.", "Oct.", "Nov.", "Dic."],
+                                        datasets: [{
+                                            label: 'Subidos',
+                                            backgroundColor: "#148F77",
+
+    
+
+                                                data: [ @{
+           
+                                                            for (int f = 0; f <= Subidos.Length - 1; f++)
+                                                            {
+                                                                @Subidos[f];
+
+                                                            }
+
+                                                }]
+                                            
+    
+                                        }, {
+                                            label: 'En Proceso',
+                                            backgroundColor: "#2E86C1 ",
+                                            data: [@{
+           
+                                                            for (int f = 0; f <= Proceso.Length - 1; f++)
+                                                            {
+                                                                @Proceso[f];
+
+                                                            }
+
+                                                }]
+                                        },{label: 'Bloqueados',
+                                            backgroundColor: "#F12437",
+
+    
+
+                                                data: [ @{
+           
+                                                            for (int f = 0; f <= Block.Length - 1; f++)
+                                                            {
+                                                                @Block[f];
+
+                                                            }
+
+                                                }]
+                                            
+    
+                                        },{
+                                            label: 'Finalizados',
+                                            backgroundColor: "#E67E22",
+                                            data: [@{
+           
+                                                            for (int f = 0; f <= Finalizados.Length - 1; f++)
+                                                            {
+                                                                @Finalizados[f];
+
+                                                            }
+
+                                                }]
+                                        }]
+                                    },
+
+                                    options: {
+                                        scales: {
+                                            yAxes: [{
+                                                ticks: {
+                                                    beginAtZero: true
+                                                }
+                                            }]
+                                        }
+                                    }
+             });
+          </script>

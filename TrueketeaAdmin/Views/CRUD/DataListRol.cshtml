@@ -1,0 +1,153 @@
+﻿@model List<RolesModel>
+@{
+    ViewBag.Title = ViewBag.Titulo;
+    string type = "" + ViewBag.Type;
+    string code = "";
+    if (@Model.Count >= 10)
+    {
+        
+        code = "height: auto !important;";
+    }
+   else
+   {
+       
+       code = "height: 100% !important; ";
+   }
+}
+
+ 
+
+ <body class="nav-md">
+    <div class="container body">
+        <div class="main_container" >
+
+            <partial name="MenuBar/MenuBar" />
+            <partial name="TopNavigation/TopNavigation" />
+ <!-- ***************************** contenido *********************************-->
+            <div class="right_col" role="main" style="@code">
+                <div>
+                    <div class="page-title">
+                        <div class="title_left">
+                            <h3>ROLES DE USUARIOS</h3>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 ">
+                            <div class="x_panel"  >
+                                <div class="x_title">
+                                    <h2>Roles para los usuarios en Truketea</h2>
+                                    <div style="float: right;">
+                                        <a style="margin: 5px" class="btn btn-success btn-sm" asp-action = "NewRol" asp-controller = "CRUD">
+                                             <i class="fa fa-plus-circle"></i> Añadir
+                                        </a>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content"  >
+                            
+                                    @{
+
+                                        if (@Model.Count > 0)
+                                        {
+                                            <table style="width:100% !important;" id="datatable" class="table table-striped table-hover table-bordered" style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th id="Table_Title">Id</th>
+                                                        <th id="Table_Title">Rol</th>
+                                                        <th id="Table_Title">Acciones</th>
+                                                    </tr>
+                                            </thead>
+
+                                            
+                                            <tbody>
+
+                                                  @foreach( var item in Model)
+                                                  {
+                                                      <tr>
+                                                            <td style="text-align:center;">@item.RolId</td>
+                                                            <td style="text-align:center;">@item.RolDesc</td>
+                                                            <td style="text-align:center;">
+
+                                                                <a style="margin: 5px" class="btn btn-warning btn-sm" asp-route-id= "@item.RolId" asp-action = "ShowRoles" asp-controller = "CRUD">
+                                                                    <i class="fa fa-pencil"></i>
+                                                                    Editar
+                                                                </a>
+
+                                                                <a style="margin: 5px" class="btn btn-danger btn-sm" asp-route-id= "@item.RolId" asp-action = "DeleteRoles" asp-controller = "CRUD">
+                                                                     <i class="fa fa-trash"></i>
+                                                                    Borrar
+                                                                </a>
+                                                            </td>
+                                                      </tr>
+                                                  }
+                                                
+
+                                            </tbody>
+                                            </table>
+                                        }
+                                        else
+                                        {
+                                            <h2>No hay datos para mostrar</h2>
+                                        }
+
+                            
+                            
+                                    }
+                                  
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+ <!-- ********************************************************************** -->
+             @{
+                                switch (type)
+                                {
+                                    case "Error":
+                                        <partial name="Messages/Error"/>
+                                        break;
+                                    case "Success":
+                                        <partial name="Messages/Success"/>
+                                        break;
+                                    case "Warning":
+                                        <partial name="Messages/Warning"/>
+                                        break;
+                                    case "Info":
+                                        <partial name="Messages/Info"/>
+                                        break;
+                                }
+                            }
+            <footer>
+                <div class="text-center">
+
+                    <div class="border-top pt-5">
+                        <p class="copyright">
+
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> All rights reserved |  <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="#" target="_blank">IS13Company</a>
+
+                        </p>
+                    </div>
+
+                    <div class="footer__social">
+                        <a href="#"><i class="fa fa-facebook-square"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-youtube-play"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                        <a href="#"><i class="fa fa-linkedin-square"></i></a>
+                    </div>
+
+                </div>
+            </footer>
+
+        </div>
+    </div>
+
+
+
+</body>

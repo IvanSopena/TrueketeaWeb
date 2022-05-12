@@ -1,0 +1,109 @@
+﻿.products-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+    .products-list > .item {
+        border-radius: 0.25rem;
+        background-color: #fff;
+        padding: 10px 0;
+    }
+
+        .products-list > .item::after {
+            display: block;
+            clear: both;
+            content: "";
+        }
+
+    .products-list .product-img {
+        float: left;
+    }
+
+        .products-list .product-img img {
+            height: 50px;
+            width: 50px;
+        }
+
+    .products-list .product-info {
+        margin-left: 60px;
+    }
+
+    .products-list .product-title {
+        font-weight: 600;
+    }
+
+    .products-list .product-description {
+        color: #6c757d;
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+.product-list-in-card > .item {
+    border-radius: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+    .product-list-in-card > .item:last-of-type {
+        border-bottom-width: 0;
+    }
+
+.dark-mode .products-list > .item {
+    background-color: #343a40;
+    color: #fff;
+    border-bottom-color: #6c757d;
+}
+
+.dark-mode .product-description {
+    color: #ced4da;
+}
+
+.direct-chat .card-body {
+    overflow-x: hidden;
+    padding: 0;
+    position: relative;
+}
+
+.product-image {
+    max-width: 100%;
+    height: auto;
+    width: 100%;
+}
+
+.product-image-thumbs {
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 2rem;
+}
+
+.product-image-thumb {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075);
+    border-radius: 0.25rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    display: -ms-flexbox;
+    display: flex;
+    margin-right: 1rem;
+    max-width: 7rem;
+    padding: 0.5rem;
+}
+
+    .product-image-thumb img {
+        max-width: 100%;
+        height: auto;
+        -ms-flex-item-align: center;
+        align-self: center;
+    }
+
+    .product-image-thumb:hover {
+        opacity: .5;
+    }
+
+.product-share a {
+    margin-right: .5rem;
+}
+

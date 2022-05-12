@@ -1,0 +1,61 @@
+﻿@{
+     int userscount = ViewBag.UsersCount;
+     int TotalProducts = ViewBag.TotalProducts;
+     int TotalTransactions = ViewBag.TotalTransactions;
+     int FinishedTransactions = ViewBag.FinishedTransactions;
+    
+}
+
+<div class="myrow">
+    <div >
+        <div >
+            <div class="col-lg-3 col-6  tile_stats_count">
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>@TotalProducts</h3>
+                        <p>Productos Totales</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-product-hunt"></i>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="col-lg-3 col-6  tile_stats_count">
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>@FinishedTransactions</h3>  @*<sup style="font-size: 20px">%</sup>*@
+                        <p>Trueques Realizados</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-handshake-o"></i>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="col-lg-3 col-6  tile_stats_count">
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        <h3>@userscount</h3>
+                        <p>Usuarios Registrados</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-users"></i>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-lg-3 col-6  tile_stats_count">
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <h3>@TotalTransactions</h3>
+                        <p>Transacciones Totales</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-exchange"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

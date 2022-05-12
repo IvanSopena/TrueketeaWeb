@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+}
+
+
+<link href="~/css/MyStyle/Dashboard.css" rel="stylesheet">
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+
+          <partial name="MenuBar/MenuBar"/>
+          <partial name="TopNavigation/TopNavigation"/>
+
+        <!-- contenido -->
+        <div class="right_col" role="main">
+          <partial name="Dashboard/ColorCards"/>
+
+           <br />
+
+           <partial name="Dashboard/Graficas"/>
+
+           <br />
+
+           <partial name="Dashboard/Graf_2"/>
+
+            <br />
+
+           <partial name="Dashboard/Map"/>
+
+        </div>
+         <!-- **************************************** -->
+        <footer>
+              <div class="text-center">
+
+                   <div class="border-top pt-5">
+                                <p class="copyright">
+
+                                    Copyright &copy;
+                                    <script>document.write(new Date().getFullYear());</script> All rights reserved |  <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="#" target="_blank">IS13Company</a>
+
+                                </p>
+                   </div>
+
+                   <div class="footer__social">
+                                    <a href="#"><i class="fa fa-facebook-square"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-youtube-play"></i></a>
+                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                    <a href="#"><i class="fa fa-linkedin-square"></i></a>
+                    </div>
+              
+              </div>
+        </footer>
+
+      </div>
+    </div>
+ 
+    
+</body>
+
