@@ -10,9 +10,6 @@ namespace TrueketeaAdmin.Services.Security
         static readonly string VIKey = "@1B2c3D4e5F6g7H8";
         static readonly string SaltKey = "MyS@LT&KEY";
 
-
-
-
         public  string Encrypt(string plainText, string PasswordHash)
         {
             byte[] plainTextBytes = Encoding.UTF8.GetBytes(plainText);
