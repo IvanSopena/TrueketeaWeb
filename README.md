@@ -1,6 +1,6 @@
 # ♻️ Trueketea: Aplicación Web 💻
 
-Este apartado es una aplicación web desarrollada en .NetCore y es parte del resultado del TFG de Ingeniería Informática.
+Este apartado es una aplicación web dedicada a la administración de la plataforma  desarrollada en .NetCore y es parte del resultado del TFG de Ingeniería Informática.
 
 ### Tecnologías empleadas
 [![](https://img.shields.io/badge/,NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)]()
@@ -19,7 +19,7 @@ Este apartado es una aplicación web desarrollada en .NetCore y es parte del res
 
 ### Resultados Obtenidos
 
-Aqui se muestran los resultados finales de la aplicación mendiante una secuencia de imagenes de las distintas vistas.</br>
+Aqui se muestran los resultados finales de la aplicación con una secuencia de imagenes de las distintas vistas.</br>
 
 [![](https://github.com/IvanSopena/TrueketeaWeb/blob/main/Screenshoot/Login.jpg)]()
 
@@ -28,3 +28,21 @@ Aqui se muestran los resultados finales de la aplicación mendiante una secuenci
 [![](https://github.com/IvanSopena/TrueketeaWeb/blob/main/Screenshoot/DB02.jpg)]()
 
 [![](https://github.com/IvanSopena/TrueketeaWeb/blob/main/Screenshoot/DB03.jpg)]()
+
+[![](https://github.com/IvanSopena/TrueketeaWeb/blob/main/Screenshoot/Perfil.jpg)]()
+
+[![](https://github.com/IvanSopena/TrueketeaWeb/blob/main/Screenshoot/Product.jpg)]()
+
+[![](https://github.com/IvanSopena/TrueketeaWeb/blob/main/Screenshoot/DetailProduct.jpg)]()
+
+[![](https://github.com/IvanSopena/TrueketeaWeb/blob/main/Screenshoot/Users.jpg)]()
+
+[![](https://github.com/IvanSopena/TrueketeaWeb/blob/main/Screenshoot/UserProfile.jpg)]()
+
+[![](https://github.com/IvanSopena/TrueketeaWeb/blob/main/Screenshoot/Categorias.jpg)]()
+
+[![](https://github.com/IvanSopena/TrueketeaWeb/blob/main/Screenshoot/Roles.jpg)]()
+
+[![](https://github.com/IvanSopena/TrueketeaWeb/blob/main/Screenshoot/notifications.jpg)]()
+
+[![](https://github.com/IvanSopena/TrueketeaWeb/blob/main/Screenshoot/ErrorLsit.jpg)]()
