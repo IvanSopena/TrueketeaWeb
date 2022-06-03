@@ -45,4 +45,4 @@ Aqui se muestran los resultados finales de la aplicación con una secuencia de i
 
 [![](https://github.com/IvanSopena/TrueketeaWeb/blob/main/Screenshoot/notifications.jpg)]()
 
-[![](https://github.com/IvanSopena/TrueketeaWeb/blob/main/Screenshoot/ErrorsLsit.jpg)]()
+[![](https://github.com/IvanSopena/TrueketeaWeb/blob/main/Screenshoot/ErrorsList.jpg)]()
