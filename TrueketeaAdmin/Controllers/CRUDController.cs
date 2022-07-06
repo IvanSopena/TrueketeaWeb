@@ -460,17 +460,36 @@ namespace TrueketeaAdmin.Controllers
         
         public IActionResult DeleteSubCategories(string Id)
         {
+            string status = b8.DBLookupEx("Subcategories", "Active", "Id_SubCat", Id);
 
-            if (b8.UpdateExpress("Subcategories", "Id_SubCat", Id, "Active", "0") == true)
+            if (status.Equals("0"))
             {
-                ViewBag.Type = "Success";
-                ViewBag.Message = "Elemento Actualizado";
+                if (b8.UpdateExpress("Subcategories", "Id_SubCat", Id, "Active", "1") == true)
+                {
+                    ViewBag.Type = "Success";
+                    ViewBag.Message = "Elemento Actualizado";
+                }
+                else
+                {
+                    ViewBag.Type = "Error";
+                    ViewBag.Message = "No se ha podido actualizar";
+                }
             }
             else
             {
-                ViewBag.Type = "Error";
-                ViewBag.Message = "No se ha podido actualizar";
+                if (b8.UpdateExpress("Subcategories", "Id_SubCat", Id, "Active", "0") == true)
+                {
+                    ViewBag.Type = "Success";
+                    ViewBag.Message = "Elemento Actualizado";
+                }
+                else
+                {
+                    ViewBag.Type = "Error";
+                    ViewBag.Message = "No se ha podido actualizar";
+                }
             }
+
+            
 
             ViewBag.name = lg.Usuarios.UserName;
             ViewBag.photo = lg.Usuarios.Photo;
@@ -580,16 +599,37 @@ namespace TrueketeaAdmin.Controllers
         public IActionResult DeleteCategories(string Id)
         {
 
-            if (b8.UpdateExpress("Categories", "Id_Categorie", Id, "Active", "0") == true)
+            string status = b8.DBLookupEx("Categories", "Active", "Id_Categorie", Id);
+
+            if(status.Equals("0"))
             {
-                ViewBag.Type = "Success";
-                ViewBag.Message = "Elemento Actualizado";
+                if (b8.UpdateExpress("Categories", "Id_Categorie", Id, "Active", "1") == true)
+                {
+                    ViewBag.Type = "Success";
+                    ViewBag.Message = "Elemento Actualizado";
+                }
+                else
+                {
+                    ViewBag.Type = "Error";
+                    ViewBag.Message = "No se ha podido actualizar";
+                }
             }
             else
             {
-                ViewBag.Type = "Error";
-                ViewBag.Message = "No se ha podido actualizar";
+                if (b8.UpdateExpress("Categories", "Id_Categorie", Id, "Active", "0") == true)
+                {
+                    ViewBag.Type = "Success";
+                    ViewBag.Message = "Elemento Actualizado";
+                }
+                else
+                {
+                    ViewBag.Type = "Error";
+                    ViewBag.Message = "No se ha podido actualizar";
+                }
             }
+
+
+            
 
             ViewBag.name = lg.Usuarios.UserName;
             ViewBag.photo = lg.Usuarios.Photo;
@@ -912,15 +952,34 @@ namespace TrueketeaAdmin.Controllers
             string id = b8.GetItemList(Id,1,",");
             string title = b8.GetItemList(Id, 2, ",");
 
-            if (b8.UpdateExpress("Login_Users", "User_Id", Id, "Active", "0") == true)
+
+            string status = b8.DBLookupEx("Login_Users", "Active", "User_Id", id);
+
+            if (status.Equals("0"))
             {
-                ViewBag.Type = "Success";
-                ViewBag.Message = "Elemento Actualizado";
+                if (b8.UpdateExpress("Login_Users", "User_Id", id, "Active", "1") == true)
+                {
+                    ViewBag.Type = "Success";
+                    ViewBag.Message = "Elemento Actualizado";
+                }
+                else
+                {
+                    ViewBag.Type = "Error";
+                    ViewBag.Message = "No se ha podido actualizar";
+                }
             }
             else
             {
-                ViewBag.Type = "Error";
-                ViewBag.Message = "No se ha podido actualizar";
+                if (b8.UpdateExpress("Login_Users", "User_Id", id, "Active", "0") == true)
+                {
+                    ViewBag.Type = "Success";
+                    ViewBag.Message = "Elemento Actualizado";
+                }
+                else
+                {
+                    ViewBag.Type = "Error";
+                    ViewBag.Message = "No se ha podido actualizar";
+                }
             }
 
             ViewBag.name = lg.Usuarios.UserName;
